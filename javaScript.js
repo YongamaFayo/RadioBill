@@ -1,10 +1,12 @@
+var textTotalAddBtn = document.querySelector (".radioBillAddBtn");
+var billTypeText = document.querySelector (".billItemTypeRadio");
 var callTotal = document.querySelector (".callTotalTwo");
 var smsTotal = document.querySelector (".smsTotalTwo");
 var totalCost = document.querySelector  (".totalTwo");
 
 var billTotal = 0;
 var callsTotal = 0;
-var smsTotal = 0;
+var SMS = 0;
 
 function textTotalAddBtnClicked (){
 var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
@@ -17,14 +19,14 @@ callsTotal += 2.75;
 }
 else if (billItem === "sms"){
 billTotal += 0.75;
-smsTotal += 0.75;
+SMS += 0.75;
 }
 totalAddBtnClicked ()
 }
 }
 function totalAddBtnClicked (){
 callTotal.innerHTML = callsTotal.toFixed (2);
-smsTotal.innerHTML = smsTotal.toFixed (2);
+smsTotal.innerHTML = SMS.toFixed (2);
 totalCost.innerHTML = billTotal.toFixed (2);
 
 if (billTotal >= 50 ){
