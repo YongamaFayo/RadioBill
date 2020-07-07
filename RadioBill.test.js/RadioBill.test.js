@@ -1,4 +1,4 @@
-describe(radioBill, function(){
+describe("radioBill", function(){
     
     it("should charge R2.75 for each call made", function(){
         var radioButton = RadioBill();
@@ -24,7 +24,7 @@ describe(radioBill, function(){
     it("should charge R0.75 for each sms made", function(){
      var radioButton = RadioBill();
      radioButton.smsIncrement();
-     assert.equal(0.75, radioButton.smsIncrement())
+     assert.equal(radioButton.smsIncrement())
  
     })
     it("should update sms total to R6 for 8 sms made",function(){
@@ -38,7 +38,7 @@ describe(radioBill, function(){
         radioButton.smsIncrement();
         radioButton.smsIncrement();
         
-        assert.equal(8,radioButton.smsMade())
+        assert.equal(6,radioButton.smsMade())
 
 
     })
@@ -50,7 +50,7 @@ describe(radioBill, function(){
 
     })
     it("should show warning colour code when it reaches R30", function(){
-        var radioButton = radioBill();
+        var radioButton = RadioBill();
         radioButton.callIncrement();
         radioButton.callIncrement();
         radioButton.callIncrement();
@@ -68,12 +68,33 @@ describe(radioBill, function(){
         radioButton.callIncrement();
         radioButton.callIncrement();
 
-        assert.equal("warning", radioButton.finalTotal())
+        assert.equal(44, radioButton.finalTotal())
 
 
 
     })
+    it("should show danger colour code when it reaches R50", function(){
+        var radioButton = RadioBill();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
+        radioButton.callIncrement();
 
+        assert.equal(44, radioButton.finalTotal())
+
+    })
 
 
 })
