@@ -25,15 +25,15 @@ function RadioBill() {
     return (callsTotal + smsTotal).toFixed(2);
 
   }
-  function warningLevel() {
-    if (finalTotal() >= 30) {
-      return 'warning'
-    }
-
-  }
-  function dangerLevel() {
+  function totalClassName() {
     if (finalTotal() >= 50) {
       return 'danger'
+    }
+
+    else if(finalTotal() >= 30) {
+      
+      // (finalTotal() >= 50) {
+      return 'warning'
     }
 
   }
@@ -43,9 +43,7 @@ function RadioBill() {
    smsIncrement,
    smsMade,
    finalTotal,
-   warningLevel,
-   dangerLevel
-
+   totalClassName
 
 
   }

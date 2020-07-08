@@ -4,9 +4,11 @@ var callTotal = document.querySelector(".callTotalTwo");
 var smsTotal = document.querySelector(".smsTotalTwo");
 var totalCost = document.querySelector(".totalTwo");
 
-var billTotal = 0;
-var callsTotal = 0;
-var SMS = 0;
+// var billTotal = 0;
+// var callsTotal = 0;
+// var SMS = 0;
+
+var instance = RadioBill()
 
 function textTotalAddBtnClicked() {
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
@@ -14,26 +16,17 @@ function textTotalAddBtnClicked() {
         var billItem = checkedRadioBtn.value;
         //var billItem = billItemType.trim ();
         if (billItem === "call") {
-            billTotal += 2.75;
-            callsTotal += 2.75;
+            instance.callIncrement()
         }
         else if (billItem === "sms") {
-            billTotal += 0.75;
-            SMS += 0.75;
+            instance.smsIncrement()
         }
-        totalAddBtnClicked()
-    }
-}
-function totalAddBtnClicked() {
-    callTotal.innerHTML = callsTotal.toFixed(2);
-    smsTotal.innerHTML = SMS.toFixed(2);
-    totalCost.innerHTML = billTotal.toFixed(2);
+        callTotal.innerHTML = instance.callMade();
+        smsTotal.innerHTML = instance.smsMade();
+        totalCost.classList.add(instance.totalClassName())
 
-    if (billTotal >= 50) {
-        totalCost.classList.add("danger");
-    }
-    else if (billTotal >= 30) {
-        totalCost.classList.add("warning");
+        totalCost.innerHTML = instance.finalTotal();
     }
 }
+
 textTotalAddBtn.addEventListener("click", textTotalAddBtnClicked);
